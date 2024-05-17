@@ -2,17 +2,17 @@
 import java.io.*;
 import java.net.*;
 public class NetworkingClient {
-    public static void main(String args[]) {
-        Socket client = null;
-// Default port number we are going to use
-        int portnumber = 1234;
-        if (args.length >= 1) {
+    static String msg = "";
+    static int portnumber = 1234;
+    static Socket client = null;
 
-            portnumber = Integer.parseInt(args[0]);
-        }
+    public void startclient(){
+
+
+
         for (int i=0; i <10; i++) {
             try {
-                String msg = "";
+
                 // Create a client socket
                 client = new Socket (InetAddress.getLocalHost(), portnumber);
                 System.out.println("Client socket is created" + client);
@@ -48,5 +48,11 @@ public class NetworkingClient {
                 System.out.println("I/O error" + ie);
             }
         }
+    }
+    public NetworkingClient(){
+        startclient();
+    }
+    public static void main(String args[]) throws IOException {
+    NetworkingServer networkingServer = new NetworkingServer();
     }
 }
